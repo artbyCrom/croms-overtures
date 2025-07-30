@@ -1,0 +1,606 @@
+/* Déclaration de la police personnalisée romanantique.woff2 */
+@font-face {
+    font-family: 'RomanAntique';
+    src: url('fonts/romanantique.woff2') format('woff2');
+    font-display: swap;
+}
+
+:root {
+    --primary-color: #F9F9F9; /* Gris clair pour le texte */
+    --visited-color: #804A00; /* Bronze pour les liens visités */
+    --accent-color: #ffd700; /* Doré pour les lueurs */
+    --shadow-color: rgba(255, 215, 0, 0.3);
+    --bg-dark: #000;
+    --bg-header: #111;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--primary-color);
+    font-family: 'RomanAntique', 'Times New Roman', serif;
+    line-height: 1.6;
+    font-size: clamp(1rem, 4vw, 1.2rem);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--bg-header);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.logo {
+    width: clamp(100px, 30vw, 120px);
+    cursor: pointer;
+}
+
+.logo-sword {
+    width: 100%;
+    max-width: clamp(100px, 30vw, 150px);
+    height: auto;
+}
+
+.hamburger {
+    display: none;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    background: transparent;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+nav {
+    position: relative;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav a:hover, nav a:focus {
+    color: var(--accent-color);
+}
+
+nav a:visited {
+    color: var(--visited-color);
+}
+
+nav a.active {
+    color: var(--accent-color);
+}
+
+nav a.active::after {
+    content: '';
+    background-image: url('img/sword_V.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 90px;
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+nav a:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.nav-sword {
+    display: none;
+}
+
+.banner {
+    width: 100vw;
+    height: auto;
+    position: fixed;
+    left: 0;
+    z-index: 999;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.separator {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.separator-img {
+    width: clamp(80px, 40vw, 150px);
+    height: auto;
+}
+
+.separator-img-vertical {
+    width: clamp(40px, 20vw, 75px);
+    height: auto;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: clamp(390px, 104vw, 520px);
+    perspective: 1000px;
+    margin: 30px 0;
+    overflow: hidden;
+}
+
+.carousel-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.carousel-item {
+    position: absolute;
+    width: clamp(195px, 52vw, 260px);
+    height: clamp(260px, 69.33vw, 347px);
+    top: 50%;
+    left: 50%;
+    transform-origin: center center;
+    transition: transform 0.7s, opacity 0.7s;
+    backface-visibility: hidden;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--shadow-color);
+}
+
+.gallery {
+    position: relative;
+    width: 100%;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.gallery h1 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.gallery-month {
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#current-month {
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    color: var(--primary-color);
+}
+
+.gallery-arrow {
+    width: clamp(30px, 10vw, 40px);
+    height: clamp(30px, 10vw, 40px);
+    cursor: pointer;
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    line-height: clamp(28px, 10vw, 38px);
+    text-align: center;
+    border-radius: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    pointer-events: auto;
+    z-index: 11;
+    touch-action: manipulation;
+}
+
+.gallery-arrow:hover, .gallery-arrow:focus, .gallery-arrow:active {
+    outline: none;
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: 0 0 5px var(--shadow-color);
+}
+
+.gallery-prev {
+    margin-right: 5px;
+}
+
+.gallery-next {
+    margin-left: 5px;
+}
+
+.gallery-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 40vw, 200px), 1fr));
+    gap: 10px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.gallery-images img {
+    max-width: 100%;
+    width: clamp(150px, 40vw, 200px);
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--shadow-color);
+    transition: opacity 3s ease, transform 0.3s;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.gallery-images img:hover {
+    transform: scale(1.05);
+}
+
+.gallery-sentinel {
+    height: 1px;
+    visibility: hidden;
+}
+
+.bio {
+    position: relative;
+    width: 100%;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.bio h1 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.bio p {
+    max-width: 800px;
+    margin: 0 auto 15px;
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    color: var(--primary-color);
+}
+
+.contact {
+    position: relative;
+    width: 100%;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.contact h1 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    width: 100%;
+    max-width: clamp(300px, 80%, 500px);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    color: var(--primary-color);
+    text-align: left;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-header);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 5px var(--shadow-color);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    font-family: 'RomanAntique', 'Times New Roman', serif;
+    background-color: var(--bg-header);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.submit-button:hover,
+.submit-button:focus {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: 0 0 5px var(--shadow-color);
+}
+
+.social {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.social p {
+    margin-bottom: 10px;
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    color: var(--primary-color);
+}
+
+.social-index p {
+    font-size: clamp(1.35rem, 4.5vw, 1.5rem);
+}
+
+.x-logo {
+    width: clamp(40px, 10vw, 50px);
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.social a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.social a img {
+    vertical-align: middle;
+    border: none;
+    outline: none;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background: var(--bg-header);
+}
+
+footer p {
+    font-family: 'Arial', sans-serif;
+    font-size: clamp(0.8rem, 3vw, 0.9rem);
+    color: var(--primary-color);
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+footer a:hover, footer a:focus {
+    color: var(--accent-color);
+}
+
+footer a:visited {
+    color: var(--visited-color);
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .logo-container {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .logo-sword {
+        max-width: clamp(80px, 20vw, 100px);
+    }
+
+    .hamburger {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+
+    nav {
+        display: none;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 1001;
+    }
+
+    nav.nav-open {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        gap: 20px;
+    }
+
+    nav a {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    nav a.active::after {
+        content: none; /* Pas de sword_V.png sous le lien actif sur mobile */
+    }
+
+    .nav-sword {
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .nav-sword img {
+        width: clamp(40px, 10vw, 50px);
+        height: auto;
+    }
+
+    .banner {
+        width: 100%;
+    }
+
+    .separator-img {
+        width: clamp(80px, 40vw, 150px);
+    }
+
+    .separator-img-vertical {
+        width: clamp(40px, 20vw, 75px);
+    }
+
+    .carousel {
+        height: clamp(325px, 86.67vw, 434px);
+    }
+
+    .carousel-item {
+        width: clamp(162.5px, 43.33vw, 217px);
+        height: clamp(216.67px, 57.78vw, 289.33px);
+    }
+
+    .gallery-month {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0;
+        padding: 0 10px;
+    }
+
+    .gallery-prev {
+        margin-right: 0;
+    }
+
+    .gallery-next {
+        margin-left: 0;
+    }
+
+    .gallery-images {
+        grid-template-columns: repeat(auto-fit, minmax(clamp(100px, 45vw, 120px), 1fr));
+    }
+
+    .gallery-images img {
+        width: clamp(100px, 45vw, 120px);
+        height: auto;
+    }
+
+    .form-group {
+        max-width: clamp(250px, 90%, 400px);
+    }
+
+    .bio p {
+        max-width: 90%;
+    }
+
+    .social-index p {
+        font-size: clamp(1.35rem, 4.5vw, 1.5rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-images {
+        grid-template-columns: repeat(auto-fit, minmax(clamp(100px, 45vw, 120px), 1fr));
+    }
+
+    .gallery-images img {
+        width: clamp(100px, 45vw, 120px);
+        margin: 0 auto;
+    }
+
+    .gallery-month {
+        gap: 10px;
+    }
+
+    .gallery-arrow {
+        width: clamp(25px, 8vw, 30px);
+        height: clamp(25px, 8vw, 30px);
+        font-size: clamp(0.8rem, 3vw, 1rem);
+    }
+
+    .form-group {
+        max-width: clamp(200px, 95%, 350px);
+    }
+}
+/* Ajout à la fin de styles.css */
+.bio .highlight {
+    font-style: italic;
+    font-weight: bold;
+    font-size: clamp(1.1rem, 4.4vw, 1.32rem); /* 10% plus grand que .bio p */
+    color: var(--accent-color); /* #ffd700, comme le lien actif */
+}
