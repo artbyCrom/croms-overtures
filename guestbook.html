@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="Guestbook and donation page for Crom's Overtures, support our Conan-inspired fantasy artwork.">
+    <meta name="keywords" content="Crom's Overtures, guestbook, donation, art, Conan, fantasy, sword and sorcery, tenebrism">
+    <meta name="author" content="Crom's Overtures">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Crom's Overtures - Guestbook">
+    <meta property="og:description" content="Support Crom's Overtures and leave a message in our guestbook.">
+    <meta property="og:image" content="https://cromsovertures.art/img/banner.jpg">
+    <meta property="og:url" content="https://cromsovertures.art/guestbook.html">
+    <meta property="og:type" content="website">
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@artbyCrom">
+    <meta name="twitter:title" content="Crom's Overtures - Guestbook">
+    <meta name="twitter:description" content="Support Crom's Overtures and leave a message in our guestbook.">
+    <meta name="twitter:image" content="https://cromsovertures.art/img/banner.jpg">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7QGJ7TFRM9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7QGJ7TFRM9');
+    </script>
+    <title>Crom's Overtures - Guestbook</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Crom's Overtures logo featuring a stylized sword" class="logo">
+            <img src="img/sword_H.png" alt="Decorative sword" class="logo-sword">
+        </div>
+        <button class="hamburger" aria-label="Toggle menu">☰</button>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="wallpapers.html">Wallpapers</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="bio.html">Bio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="guestbook.html" class="active">Guestbook</a></li>
+                <li><a href="https://linktr.ee/cromsovertures">Link Tree</a></li>
+            </ul>
+            <div class="nav-sword">
+                <img src="img/sword_V.png" alt="Decorative vertical sword" class="mobile-only glow" onload="console.log('nav-sword sword_V.png loaded successfully')" onerror="console.log('nav-sword sword_V.png failed to load')">
+            </div>
+        </nav>
+    </header>
+
+    <div class="banner">
+        <img src="img/banner.jpg" alt="Crom's Overtures banner" loading="lazy">
+    </div>
+    <div class="separator">
+        <img src="img/sword_H.png" alt="Decorative sword separator" class="separator-img">
+    </div>
+
+    <main>
+        <section class="guestbook">
+            <div class="donation">
+                <div class="donation-methods">
+                    <h2>You like our art? Give us a tip!</h2>
+                    <div class="donation-kofi">
+                        <a href="https://ko-fi.com/D1D61IXLLK" target="_blank">
+                            <img src="https://storage.ko-fi.com/cdn/kofi3.png?v=6" alt="Buy Me a Coffee at ko-fi.com" class="kofi-logo">
+                        </a>
+                    </div>
+                    <div class="donation-crypto">
+                        <div class="crypto-buttons">
+                            <button class="crypto-button" data-address="bc1q0sekhtm0jzf7su7m4erlh7gu9m3jmw9sudmurl" aria-label="Copy Bitcoin address">
+                                <img src="img/btc.png" alt="Bitcoin" class="crypto-logo">
+                            </button>
+                            <button class="crypto-button" data-address="0xb817424D4339B154F81b4347134Fe748b8dF704A" aria-label="Copy Ethereum address">
+                                <img src="img/eth.png" alt="Ethereum" class="crypto-logo">
+                            </button>
+                            <button class="crypto-button" data-address="32YNZapyuFfi8Ss44VQUk7nngrkdSyVjYDwcR4cJDHJT" aria-label="Copy Solana address">
+                                <img src="img/sol.png" alt="Solana" class="crypto-logo">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="separator">
+                <img src="img/sword_H.png" alt="Decorative sword separator" class="separator-img">
+            </div>
+            <div class="guestbook-form">
+                <h2>You like our art? Let us know!</h2>
+                <form id="guestbook-form">
+                    <div class="form-group">
+                        <label for="guestbook-name">Name</label>
+                        <input type="text" id="guestbook-name" name="name" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="guestbook-message">Message</label>
+                        <textarea id="guestbook-message" name="message" rows="5" required aria-required="true"></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Submit</button>
+                </form>
+            </div>
+            <div class="guestbook-messages-container">
+                <div id="guestbook-messages" class="guestbook-messages">
+                    <p>Loading messages...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="separator">
+        <img src="img/sword_V.png" alt="Decorative vertical sword separator" class="separator-img separator-img-vertical glow" onload="console.log('separator sword_V.png loaded successfully')" onerror="console.log('separator sword_V.png failed to load')">
+    </div>
+
+    <div class="social">
+        
+        <a href="https://x.com/artbyCrom">
+            <img src="img/x-logo.png" alt="X logo" class="x-logo">
+        </a>
+        <a href="https://instagram.com/artbycrom">
+            <img src="img/insta.png" alt="Instagram logo" class="x-logo">
+        </a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Crom's Overtures. All rights reserved. | <a href="contact.html">Contact us</a></p>
+    </footer>
+
+    <script type="module" src="js/firebaseConfig.js"></script>
+    <script type="module" src="js/script.js"></script>
+</body>
+</html>

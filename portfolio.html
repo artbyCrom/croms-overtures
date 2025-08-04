@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="Portfolio of Crom's Overtures, showcasing Conan-inspired fantasy artwork in Old School, Medieval, Dark Fantasy, and Photorealistic styles.">
+    <meta name="keywords" content="Crom's Overtures, portfolio, art, Conan, fantasy, illustrations, sword and sorcery, tenebrism">
+    <meta name="author" content="Crom's Overtures">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Crom's Overtures - Portfolio">
+    <meta property="og:description" content="Explore our portfolio of Conan-inspired fantasy artwork in various styles.">
+    <meta property="og:image" content="https://cromsovertures.art/img/banner.jpg">
+    <meta property="og:url" content="https://cromsovertures.art/portfolio.html">
+    <meta property="og:type" content="website">
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@artbyCrom">
+    <meta name="twitter:title" content="Crom's Overtures - Portfolio">
+    <meta name="twitter:description" content="Explore our portfolio of Conan-inspired fantasy artwork in various styles.">
+    <meta name="twitter:image" content="https://cromsovertures.art/img/banner.jpg">
+    <!-- Google Analytics (commenté pour les tests locaux) -->
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7QGJ7TFRM9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7QGJ7TFRM9');
+    </script>
+    
+    <title>Crom's Overtures - Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <style>
+        /* Styles pour la galerie */
+        .portfolio-gallery-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        #portfolio-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            max-width: 1200px;
+            width: 100%;
+        }
+        #portfolio-gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, opacity 0.5s ease;
+            opacity: 0;
+        }
+        #portfolio-gallery img.loaded {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        .portfolio-item {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .portfolio-item:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Crom's Overtures logo featuring a stylized sword" class="logo">
+            <img src="img/sword_H.png" alt="Decorative sword" class="logo-sword">
+        </div>
+        <button class="hamburger" aria-label="Toggle menu">☰</button>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="wallpapers.html">Wallpapers</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="bio.html">Bio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="guestbook.html">Guestbook</a></li>
+                <li><a href="https://linktr.ee/cromsovertures">Link Tree</a></li>
+            </ul>
+            <div class="nav-sword">
+                <img src="img/sword_V.png" alt="Decorative vertical sword" class="mobile-only glow" onload="console.log('nav-sword sword_V.png loaded successfully')" onerror="console.log('nav-sword sword_V.png failed to load')">
+            </div>
+        </nav>
+    </header>
+
+    <div class="banner">
+        <img src="img/banner.jpg" alt="Crom's Overtures banner" loading="lazy">
+    </div>
+    <div class="separator">
+        <img src="img/sword_H.png" alt="Decorative sword separator" class="separator-img">
+    </div>
+
+    <main>
+        <section class="portfolio">
+            <h1>Portfolio</h1>
+            <div class="portfolio-styles">
+                <div class="portfolio-item" data-style="oldschool">
+                    <img src="img/portfolio/oldschool.jpg" alt="Old School style artwork" loading="lazy">
+                    <h2>Old School</h2>
+                </div>
+                <div class="portfolio-item" data-style="medieval">
+                    <img src="img/portfolio/medieval.jpg" alt="Medieval style artwork" loading="lazy">
+                    <h2>Medieval</h2>
+                </div>
+                <div class="portfolio-item" data-style="dark">
+                    <img src="img/portfolio/dark.jpg" alt="Dark Fantasy style artwork" loading="lazy">
+                    <h2>Dark Fantasy</h2>
+                </div>
+                <div class="portfolio-item" data-style="photo">
+                    <img src="img/portfolio/photo.jpg" alt="Photorealistic style artwork" loading="lazy">
+                    <h2>Photorealistic</h2>
+                </div>
+            </div>
+            
+            <div class="portfolio-gallery-container">
+                <div id="portfolio-gallery" class="gallery-images">
+                    <!-- Les images du portfolio seront chargées ici via JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="separator">
+        <img src="img/sword_V.png" alt="Decorative vertical sword separator" class="separator-img separator-img-vertical glow">
+    </div>
+
+    <div class="social">
+        <a href="https://x.com/artbyCrom">
+            <img src="img/x-logo.png" alt="X logo" class="x-logo">
+        </a>
+        <a href="https://instagram.com/artbycrom">
+            <img src="img/insta.png" alt="Instagram logo" class="x-logo">
+        </a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Crom's Overtures. All rights reserved. | <a href="contact.html">Contact us</a></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="js/firebaseConfig.js"></script>
+    <script type="module" src="js/script.js"></script>
+    <!-- Script personnalisé pour le portfolio -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            const portfolioGallery = document.getElementById('portfolio-gallery');
+
+            portfolioItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const style = item.dataset.style;
+                    portfolioGallery.innerHTML = ''; // Vide la galerie avant de charger les nouvelles images
+
+                    for (let i = 1; i <= 9; i++) {
+                        const img = document.createElement('img');
+                        img.src = `img/portfolio/${style}/${style}_${i}.jpg`;
+                        img.alt = `${style} artwork ${i}`;
+                        img.loading = 'lazy';
+                        img.classList.add('gallery-image');
+                        portfolioGallery.appendChild(img);
+                        // Ajoute un effet de fondu pour le chargement
+                        setTimeout(() => img.classList.add('loaded'), 100);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

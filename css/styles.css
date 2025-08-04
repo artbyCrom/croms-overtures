@@ -1,4 +1,4 @@
-/* Déclaration de la police personnalisée romanantique.woff2 */
+/* Font declaration */
 @font-face {
     font-family: 'RomanAntique';
     src: url('fonts/romanantique.woff2') format('woff2');
@@ -6,12 +6,13 @@
 }
 
 :root {
-    --primary-color: #F9F9F9; /* Gris clair pour le texte */
-    --visited-color: #804A00; /* Bronze pour les liens visités */
-    --accent-color: #ffd700; /* Doré pour les lueurs */
+    --primary-color: #F9F9F9; /* Light gray for text */
+    --visited-color: #804A00; /* Bronze for visited links */
+    --accent-color: #ffd700; /* Gold for highlights */
     --shadow-color: rgba(255, 215, 0, 0.3);
     --bg-dark: #000;
     --bg-header: #111;
+    --bg-messages: #1a1a1a; /* Slightly lighter background for guestbook messages */
 }
 
 * {
@@ -101,7 +102,7 @@ nav a.active {
 
 nav a.active::after {
     content: '';
-    background-image: url('img/sword_V.png');
+    background-image: url('img/sword_H.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -149,8 +150,18 @@ nav a:focus {
 }
 
 .separator-img-vertical {
-    width: clamp(40px, 20vw, 75px);
+    max-width: clamp(40px, 20vw, 75px);
     height: auto;
+    margin: 0 auto;
+}
+
+.glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { filter: drop-shadow(0 0 5px var(--shadow-color)); }
+    50% { filter: drop-shadow(0 0 15px var(--accent-color)); }
 }
 
 .carousel {
@@ -265,6 +276,7 @@ nav a:focus {
     max-width: 100%;
     margin: 0 auto;
     padding: 0 10px;
+    visibility: visible;
 }
 
 .gallery-images img {
@@ -274,9 +286,8 @@ nav a:focus {
     object-fit: contain;
     border-radius: 10px;
     box-shadow: 0 0 10px var(--shadow-color);
-    transition: opacity 3s ease, transform 0.3s;
+    transition: opacity 0.3s ease, transform 0.3s;
     cursor: pointer;
-    opacity: 0;
 }
 
 .gallery-images img:hover {
@@ -284,15 +295,236 @@ nav a:focus {
 }
 
 .gallery-sentinel {
-    height: 1px;
+    height: 10px;
+    width: 100%;
     visibility: hidden;
 }
+
+.top-liked {
+    margin-bottom: 20px;
+}
+
+#top-liked-button {
+    display: none;
+}
+
+#top-liked-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(100px, 30vw, 150px), 1fr));
+    gap: 10px;
+}
+
+.like-container {
+    position: relative;
+    display: inline-block;
+}
+
+.like-button {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: none;
+    border: none;
+    font-size: clamp(0.8rem, 3vw, 1rem);
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.like-button.liked {
+    color: red;
+}
+
+.like-count {
+    position: absolute;
+    top: 5px;
+    left: 25px;
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+    color: var(--primary-color);
+}
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.lightbox-buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.lightbox-buttons button {
+    padding: 5px 10px;
+    background-color: var(--bg-header);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.lightbox-buttons button:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.download-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 5px 10px;
+    background-color: var(--bg-header);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-colors);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.download-button:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+
+/* Section Portfolio */
+.portfolio {
+    position: relative;
+    width: 100%;
+    padding: 30px 0;
+    text-align: center;
+    margin-top: 350px;
+}
+
+.portfolio h1 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.portfolio-styles {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espace entre les 4 vignettes */
+    margin-bottom: 20px;
+    max-width: 800px; /* Limite la largeur totale */
+    margin-left: auto;
+    margin-right: auto; /* Centre les 4 vignettes */
+}
+
+.portfolio-item {
+    cursor: pointer;
+    text-align: center;
+}
+
+.portfolio-item img {
+    width: clamp(150px, 20vw, 200px);
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--shadow-color);
+}
+
+.portfolio-item h2 {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    margin-top: 10px;
+    color: var(--primary-color);
+}
+
+.portfolio-gallery-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Change à flex-start pour éviter un étirement vertical excessif */
+    width: 100%;
+    padding: 0 0 40px; /* Ajoute un padding-bottom pour l'espace avec sword_V.png */
+    box-sizing: border-box;
+}
+
+#portfolio-gallery {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* 3 colonnes fixes */
+    gap: 15px !important; /* Réduit l'espace entre les vignettes pour plus de compacité */
+    max-width: 620px !important; /* Ajusté pour 3 vignettes + gaps, aligné avec .portfolio-styles */
+    width: 100% !important;
+    justify-content: center !important; /* Centre la grille */
+    min-height: 0 !important; /* Supprime min-height excessif */
+    padding: 10px !important;
+    box-sizing: border-box !important;
+}
+
+#portfolio-gallery img {
+    width: clamp(150px, 20vw, 200px) !important; /* Taille des vignettes */
+    height: auto !important;
+    border-radius: 10px !important;
+    box-shadow: 0 0 10px var(--shadow-color) !important;
+    object-fit: cover !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    z-index: 10 !important;
+    max-width: 100% !important;
+}
+
+/* Effet de glow pour la vignette active */
+.active-glow {
+    box-shadow: 0 0 10px 5px rgba(255, 215, 0, 0.7);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Media Queries pour la responsivité */
+@media (max-width: 768px) {
+    #portfolio-gallery {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important; /* Réduit encore pour tablettes */
+    }
+
+    #portfolio-gallery img {
+        width: clamp(120px, 40vw, 150px) !important;
+    }
+
+    .portfolio-styles {
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 480px) {
+    #portfolio-gallery {
+        grid-template-columns: 1fr !important;
+        gap: 5px !important; /* Minimise l'espace pour mobiles */
+    }
+
+    #portfolio-gallery img {
+        width: clamp(100px, 80vw, 120px) !important;
+    }
+
+    .portfolio-styles {
+        flex-direction: column;
+        gap: 10px;
+        max-width: 200px;
+    }
+}
+/* Fin Section Portfolio */
 
 .bio {
     position: relative;
     width: 100%;
     padding: 30px 0;
     text-align: center;
+    margin-top: 350px;
 }
 
 .bio h1 {
@@ -308,11 +540,19 @@ nav a:focus {
     color: var(--primary-color);
 }
 
+.bio .highlight {
+    font-style: italic;
+    font-weight: bold;
+    font-size: clamp(1.1rem, 4.4vw, 1.32rem);
+    color: var(--accent-color);
+}
+
 .contact {
     position: relative;
     width: 100%;
     padding: 30px 0;
     text-align: center;
+    margin-top: 250px;
 }
 
 .contact h1 {
@@ -387,6 +627,121 @@ nav a:focus {
     box-shadow: 0 0 5px var(--shadow-color);
 }
 
+.guestbook {
+    position: relative;
+    width: 100%;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.guestbook h2 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.donation {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.donation-methods {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 10px;
+}
+
+.donation-kofi img {
+    height: 36px;
+    vertical-align: middle;
+}
+
+.donation-crypto {
+    display: flex;
+    align-items: center;
+}
+
+.crypto-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.crypto-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.crypto-logo {
+    width: clamp(30px, 8vw, 40px);
+    height: auto;
+    vertical-align: middle;
+}
+
+.guestbook-form {
+    margin: 20px auto;
+    max-width: clamp(400px, 80%, 600px);
+}
+
+.guestbook-form form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.guestbook-form .form-group {
+    flex: 1;
+    min-width: 0;
+}
+
+.guestbook-form .submit-button {
+    align-self: flex-end;
+    margin-left: 10px;
+}
+
+.guestbook-messages-container {
+    width: 100%;
+    background-color: var(--bg-messages);
+    padding: 20px;
+}
+
+.guestbook-messages {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.guestbook-message {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: var(--bg-messages);
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.guestbook-message:last-child {
+    border-bottom: none;
+}
+
+.guestbook-message p {
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    color: var(--primary-color);
+}
+
+.guestbook-message .name {
+    font-weight: bold;
+}
+
+.guestbook-message .date {
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+    color: var(--visited-color);
+}
+
 .social {
     text-align: center;
     margin: 30px 0;
@@ -398,7 +753,13 @@ nav a:focus {
     color: var(--primary-color);
 }
 
-.social-index p {
+.social-index, .social-contact {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-index p, .social-contact p {
     font-size: clamp(1.35rem, 4.5vw, 1.5rem);
 }
 
@@ -418,6 +779,36 @@ nav a:focus {
     vertical-align: middle;
     border: none;
     outline: none;
+}
+
+.share-button {
+    position: absolute;
+    z-index: 1000;
+}
+
+.share-button.desktop {
+    top: calc(var(--header-height, 60px) + 10px);
+    right: 10px;
+}
+
+.share-button.mobile {
+    display: none;
+    top: calc(var(--header-height, 60px) + 10px);
+    right: 60px;
+}
+
+.share-button button {
+    padding: 5px 10px;
+    background-color: var(--bg-header);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.share-button button:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
 }
 
 footer {
@@ -445,6 +836,234 @@ footer a:visited {
     color: var(--visited-color);
 }
 
+/* Grille des wallpapers, spécifique à wallpapers.html */
+/* Grille des wallpapers */
+/* Lightbox */
+.wallpaper-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.wallpaper-lightbox .lightbox-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    width: 100%;
+    padding: 20px;
+}
+
+.wallpaper-lightbox .lightbox-image {
+    width: auto;
+    height: 100vh;
+    object-fit: contain;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.wallpaper-lightbox .lightbox-image.zoomed {
+    transform: scale(1.5);
+    cursor: zoom-out;
+}
+
+.wallpaper-lightbox .wallpaper-download-button,
+.wallpaper-lightbox .wallpaper-share-button {
+    position: static;
+    background-color: var(--bg-header); /* #111 */
+    color: var(--primary-color); /* #F9F9F9 */
+    font-family: 'RomanAntique', 'Times New Roman', serif;
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    padding: 8px 16px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 5px;
+    transition: all 0.3s;
+}
+
+.wallpaper-lightbox .wallpaper-download-button:hover,
+.wallpaper-lightbox .wallpaper-share-button:hover {
+    border-color: var(--accent-color); /* #ffd700 */
+    color: var(--accent-color);
+    box-shadow: 0 0 5px var(--shadow-color);
+}
+
+.wallpaper-lightbox .close-button {
+position: fixed; /* Changé de absolute à fixed pour être relatif à la fenêtre */
+    top: 20px; /* Augmenté pour plus de marge */
+    right: 20px;
+    background-color: red; 
+    color: var(--primary-color);
+    font-family: 'RomanAntique', 'Times New Roman', serif;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    padding: 5px 10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    line-height: 1;
+    z-index: 1001; /* Au-dessus de tous les éléments */
+    display: block;
+}
+
+.wallpaper-lightbox .close-button:hover,
+.wallpaper-lightbox .close-button:focus {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: 0 0 5px var(--shadow-color);
+}
+
+/* Grille des wallpapers (inchangée) */
+#wallpapers-phone.gallery-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.wallpaper-item {
+    position: relative;
+    width: 200px;
+}
+
+.wallpaper-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.wallpaper-thumb {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px;
+    box-shadow: 0 0 10px var(--shadow-color);
+}
+
+.wallpaper-download-button,
+.wallpaper-share-button {
+    background-color: var(--bg-header);
+    color: var(--primary-color);
+    font-family: 'RomanAntique', 'Times New Roman', serif;
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    padding: 8px 16px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.wallpaper-download-button:hover,
+.wallpaper-share-button:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: 0 0 5px var(--shadow-color);
+}
+
+/* Fallback sharing lightbox (inchangée) */
+.share-fallback-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.share-fallback {
+    background: var(--bg-header);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 90%;
+}
+
+.share-fallback p {
+    color: var(--primary-color);
+    font-family: 'RomanAntique', 'Times New Roman', serif;
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    margin-bottom: 15px;
+}
+
+.share-fallback button,
+.share-fallback a {
+    background-color: var(--bg-header);
+    color: var(--primary-color);
+    font-family: 'RomanAntique', 'Times New Roman', serif;
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    padding: 8px 16px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 5px;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.share-fallback button:hover,
+.share-fallback a:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: 0 0 5px var(--shadow-color);
+}
+
+/* Prevent background scrolling */
+body.lightbox-open {
+    overflow: hidden;
+}
+
+/* Media Queries */
+@media (min-width: 769px) {
+    .donation-methods {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .guestbook-form {
+        max-width: clamp(500px, 80%, 700px);
+    }
+
+    .guestbook-form form {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    .guestbook-form .form-group {
+        flex: 2;
+    }
+
+    .guestbook-form .submit-button {
+        flex: 0 0 auto;
+        margin-left: 20px;
+    }
+
+    .guestbook-messages-container {
+        margin-top: 20px;
+    }
+}
+
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -466,6 +1085,15 @@ footer a:visited {
         position: absolute;
         top: 15px;
         right: 15px;
+        z-index: 1002;
+    }
+
+    .share-button.mobile {
+        display: block;
+    }
+
+    .share-button.desktop {
+        display: none;
     }
 
     nav {
@@ -499,7 +1127,7 @@ footer a:visited {
     }
 
     nav a.active::after {
-        content: none; /* Pas de sword_V.png sous le lien actif sur mobile */
+        content: none;
     }
 
     .nav-sword {
@@ -524,7 +1152,8 @@ footer a:visited {
     }
 
     .separator-img-vertical {
-        width: clamp(40px, 20vw, 75px);
+        max-width: clamp(40px, 20vw, 75px);
+        margin: 0 auto;
     }
 
     .carousel {
@@ -560,15 +1189,80 @@ footer a:visited {
         height: auto;
     }
 
-    .form-group {
-        max-width: clamp(250px, 90%, 400px);
+    .top-liked {
+        position: relative;
+    }
+
+    #top-liked-button {
+        display: block;
+        margin: 0 auto 10px;
+        padding: 5px 10px;
+        background-color: var(--bg-header);
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #top-liked-button:hover {
+        border-color: var(--accent-color);
+        color: var(--accent-color);
+    }
+
+    #top-liked-images {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        z-index: 1001;
+    }
+
+    #top-liked-images.active {
+        display: grid;
+    }
+
+    .portfolio-styles {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .portfolio-item img {
+        width: clamp(120px, 45vw, 150px);
+    }
+
+    #portfolio-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .donation-methods {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .guestbook-form {
+        max-width: clamp(300px, 90%, 500px);
+    }
+
+    .guestbook-form form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .guestbook-form .submit-button {
+        margin-top: 10px;
+        margin-left: 0;
     }
 
     .bio p {
         max-width: 90%;
     }
 
-    .social-index p {
+    .social-index p, .social-contact p {
         font-size: clamp(1.35rem, 4.5vw, 1.5rem);
     }
 }
@@ -593,14 +1287,35 @@ footer a:visited {
         font-size: clamp(0.8rem, 3vw, 1rem);
     }
 
+    #portfolio-gallery {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
     .form-group {
         max-width: clamp(200px, 95%, 350px);
     }
 }
-/* Ajout à la fin de styles.css */
-.bio .highlight {
-    font-style: italic;
-    font-weight: bold;
-    font-size: clamp(1.1rem, 4.4vw, 1.32rem); /* 10% plus grand que .bio p */
-    color: var(--accent-color); /* #ffd700, comme le lien actif */
+
+/* Hide sword_V.png in desktop and in nav except in mobile with menu open */
+.nav-sword {
+    display: none;
+}
+
+.nav-sword img.mobile-only {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .nav-open .nav-sword img.mobile-only {
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.separator .separator-img-vertical {
+    display: block;
 }
