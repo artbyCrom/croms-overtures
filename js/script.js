@@ -737,7 +737,7 @@ function loadPortfolioThumbnails(style) {
                     const shareData = {
                         title: `${e.target.previousElementSibling.alt}`,
                         text: `Check out this awesome artwork by Crom's Overtures!`,
-                        url: `https://cromsovertures.art/${e.target.previousElementSibling.src}`
+                        url: `${e.target.previousElementSibling.src}`
                     };
                     try {
                         if (navigator.share) {
@@ -747,7 +747,7 @@ function loadPortfolioThumbnails(style) {
                             const fallbackOptions = `
                                 <div class="share-fallback">
                                     <p>Share this artwork:</p>
-                                    <button onclick="copyToClipboard('https://cromsovertures.art/${e.target.previousElementSibling.src}')">Copy Link</button>
+                                    <button onclick="copyToClipboard('${e.target.previousElementSibling.src}')">Copy Link</button>
                                     <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(shareData.text)}&url=${encodeURIComponent(shareData.url)}" target="_blank">Share on Twitter</a>
                                     <a href="https://www.facebook.com/sharer.php?u=${encodeURIComponent(shareData.url)}" target="_blank">Share on Facebook</a>
                                 </div>
